@@ -28,11 +28,18 @@ build: Resources/AppIcon.icns
 	codesign --force --deep --sign - "$(BUNDLE_DIR)"
 	@echo "✅ Built $(BUNDLE_DIR)"
 
+LSREGISTER = /System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister
+
 install: build
 	@pkill -x "$(APP_NAME)" 2>/dev/null || true
 	@pkill -x "TeamsGreen" 2>/dev/null || true
+	-@$(LSREGISTER) -u "$(CURDIR)/$(BUNDLE_DIR)" 2>/dev/null || true
 	rm -rf "$(INSTALL_DIR)"
 	cp -R "$(BUNDLE_DIR)" "$(INSTALL_DIR)"
+	rm -rf build
+	@swift -e 'import Cocoa; if let img = NSImage(contentsOfFile: "Resources/AppIcon.icns") { NSWorkspace.shared.setIcon(img, forFile: "$(INSTALL_DIR)", options: []) }'
+	touch "$(INSTALL_DIR)"
+	-@$(LSREGISTER) -f "$(INSTALL_DIR)" 2>/dev/null || true
 	@echo "🚀 Installed to $(INSTALL_DIR)"
 
 run: install
