@@ -24,9 +24,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     var jiggleCount: Int = 0
 
     let presets: [IconPreset] = [
+        IconPreset(name: "Mouse (เมาส์)", activeSymbol: "computermouse.fill", pausedSymbol: "computermouse"),
         IconPreset(name: "Cup (ถ้วยกาแฟ)", activeSymbol: "cup.and.saucer.fill", pausedSymbol: "cup.and.saucer"),
         IconPreset(name: "Bolt (สายฟ้า)", activeSymbol: "bolt.fill", pausedSymbol: "bolt.slash"),
-        IconPreset(name: "Mouse (เมาส์)", activeSymbol: "computermouse.fill", pausedSymbol: "computermouse"),
         IconPreset(name: "Minimal Dot (จุดเล็ก)", activeSymbol: "smallcircle.filled.circle", pausedSymbol: "circle.dotted"),
         IconPreset(name: "Eye (ดวงตา)", activeSymbol: "eye.fill", pausedSymbol: "eye.slash")
     ]

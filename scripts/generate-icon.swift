@@ -43,7 +43,7 @@ for (px, filename) in sizes {
     let gradient = NSGradient(starting: topColor, ending: bottomColor)!
     gradient.draw(in: path, angle: -90)
 
-    if let symbol = NSImage(systemSymbolName: "cup.and.saucer.fill", accessibilityDescription: nil) {
+    if let symbol = NSImage(systemSymbolName: "computermouse.fill", accessibilityDescription: nil) {
         let config = NSImage.SymbolConfiguration(pointSize: CGFloat(px) * 0.44, weight: .semibold)
             .applying(NSImage.SymbolConfiguration(paletteColors: [.white]))
         if let configured = symbol.withSymbolConfiguration(config) {
